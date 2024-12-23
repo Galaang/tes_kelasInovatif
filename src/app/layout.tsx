@@ -24,95 +24,93 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#fafafa]`}
       >
-        <div className="flex h-screen">
-          {/* Sidebar */}
-          <div className="w-[280px] bg-white border-r h-screen fixed left-0 flex flex-col">
-            <div className="p-5 border-b">
-              <Link href="/">
-                <p className="text-xl font-semibold">SCIPACE</p>
-              </Link>
-            </div>
-            
-            {/* Main Navigation */}
-            <div className="flex-1 overflow-y-auto">
-              <div className="px-3 py-4">
-                <nav>
-                  <ul className="space-y-1">
-                    <li>
-                      <Link 
-                        href="/" 
-                        className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md group border-b-2"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 mr-2">
-                        <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-                        <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-                      </svg>
-                        <span>Home</span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link 
-                        href="/chat" 
-                        className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md group"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 mr-2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
-                      </svg>
-                        <span>Chat with PDF</span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link 
-                        href="/pricing" 
-                        className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md group"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 mr-2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                      </svg>
+        <div className="flex flex-col h-screen">
+          {/* Top Navigation - Full Width */}
+          <nav className="flex justify-between items-center px-6 py-3 border-b sticky top-0 bg-white w-full z-10">
+            <Link href="/">
+              <p className="text-xl font-semibold">SCISPACE</p>
+            </Link>
+            <ul className="flex items-center space-x-4">
+              <li>
+                <Link href="/pricing" className="flex items-center px-4 py-2 text-gray-600 hover:text-blue-500 font-semibold">
+                  <span>Pricing</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/chat" className="flex items-center px-4 py-2 text-orange-500 hover:text-orange-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 mr-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                  <span>Chat with PDF</span>
+                </Link>
+              </li>
+              <li>
+                <button className="text-black font-semibold transition-colors hover:text-gray-600">
+                  Login
+                </button> 
+              </li>
+              <li>
+                <button className="bg-black text-white px-4 py-2 rounded font-semibold hover:bg-blue-500 transition-colors">
+                  Sign up
+                </button>
+              </li>
+            </ul>
+          </nav>
 
-                        <span>Literature Review</span>
-                      </Link>
-                    </li>
-                  </ul>
-                </nav>
+          {/* Main Content Area with Sidebar */}
+          <div className="flex flex-1">
+            {/* Sidebar */}
+            <div className="w-[280px] bg-white border-r h-[calc(100vh-57px)] fixed left-0">
+              <div className="flex-1 overflow-y-auto">
+                <div className="px-3 py-4">
+                  <nav>
+                    <ul className="space-y-1">
+                      <li>
+                        <Link 
+                          href="/" 
+                          className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md group border-b-2"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 mr-2">
+                          <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                          <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                        </svg>
+                          <span>Home</span>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link 
+                          href="/chat" 
+                          className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md group"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 mr-2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+                        </svg>
+                          <span>Chat with PDF</span>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link 
+                          href="/pricing" 
+                          className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md group"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 mr-2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+
+                          <span>Literature Review</span>
+                        </Link>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Main Content */}
-          <div className="ml-[280px] flex-1">
-            {/* Top Navigation */}
-            <nav className="flex justify-end items-center px-6 py-3 border-b sticky top-0 bg-white">
-              <ul className="flex items-center space-x-8">
-                <li>
-                  <Link href="/pricing" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
-                    <span>Pricing</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/chat" className="flex items-center px-4 py-2 text-orange-500 hover:bg-gray-100">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 mr-2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                    <span>Chat with PDF</span>
-                  </Link>
-                </li>
-                <li>
-                  <button className="text-black font-semibold transition-colors hover:text-gray-600">
-                    Login
-                  </button> 
-                </li>
-                <li>
-                  <button className="bg-black text-white px-4 py-2 rounded font-semibold hover:bg-blue-500 transition-colors">
-                    Sign up
-                  </button>
-                </li>
-              </ul>
-            </nav>
-
-            {/* Main Content Area */}
-            <div className="p-6">
-              {children}
+            {/* Main Content */}
+            <div className="ml-[280px] flex-1">
+              <div className="p-6">
+                {children}
+              </div>
             </div>
           </div>
         </div>
