@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
+import { LoginDialog } from "@/components/login-dialog"
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,9 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </Link>
               </li>
               <li>
-                <button className="text-black font-semibold transition-colors hover:text-gray-600">
-                  Login
-                </button> 
+                <LoginDialog />
               </li>
               <li>
                 <button className="bg-black text-white px-4 py-2 rounded font-semibold hover:bg-blue-500 transition-colors">
